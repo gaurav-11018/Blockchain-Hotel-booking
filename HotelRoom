@@ -23,4 +23,13 @@ constructor(){
 
 function book()public payable{
     currentStatus=Statuses.Occupied;
+    
+    
+    (bool sent,bytes memory data)= owner.call{msg.value}("");
+    require(sent);
+
+    emit Occupy(msg.sender, msg.value);
+}
+
+}
 
